@@ -2,9 +2,11 @@
 
 .section .data
 	number:
-		.int 100000000
+		.int 10
 
-DECLARE_GLOBAL(asm_function)
+
+
+#DECLARE_GLOBAL(asm_function)
 
 
 ################################################################################
@@ -16,8 +18,12 @@ DECLARE_GLOBAL(asm_function)
 # modifies:
 # notes:
 ################################################################################
-FUNC(asm_function):
-	
+#FUNC(asm_function):
+
+
+.global main
+
+main:	
 	movl (number), %ecx
 	movl $2, %ebx
 	
@@ -33,4 +39,4 @@ FUNC(asm_function):
 	end_loop:
 		ret
 
-	# Do something here...
+	# gcc -m32 -masm=att -pg asm.S -o asm
