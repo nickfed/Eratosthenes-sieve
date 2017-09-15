@@ -4,7 +4,7 @@
 # -masm=att Compiles .C with at&t assembly systax
 
 CC = gcc
-CFLAGS = -m32 -masm=att
+CFLAGS = -m32 -masm=att -pg
 
 all: program
 

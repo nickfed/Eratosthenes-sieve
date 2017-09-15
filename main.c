@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 
 	printf("Welcome to Eratosthenes sieve test\n");
 	int n;
-	n = 10;//0000000;
+	n = 100000000;
 	int *mass;
 	int *mass_copy;
 	mass = (int *)malloc(n * sizeof(int));
