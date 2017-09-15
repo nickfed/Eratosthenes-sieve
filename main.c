@@ -3,12 +3,13 @@
 #include <stdint.h>
 #include <string.h>
 
+
 // Declaring that assembly function is provided elsewhere
-extern void asm_function();
+extern  void asm_function(int *mas, int a);
 
 // This should be the C equivalent to the assembly implementation
 void c_function(int *mass, int n) {
-	for (int k = 2; k*k <= n; k++)
+	for (int k = 2; k <= n; k++)
 	{
 		if (mass[k] != 0){
 			for (int l = 2*k; l <= n; l += k){
@@ -22,7 +23,7 @@ int main(int argc, char **argv) {
 
 	printf("Welcome to Eratosthenes sieve test\n");
 	int n;
-	n = 1000000;
+	n = 10;//0000000;
 	int *mass;
 	int *mass_copy;
 	mass = (int *)malloc(n * sizeof(int));
@@ -39,7 +40,7 @@ int main(int argc, char **argv) {
 	printf("C function test begins\n");
 	
 	c_function(mass, n);
-	
+
 	printf("C function test ends\n");
 
 	printf("Assembly function test begins\n");
