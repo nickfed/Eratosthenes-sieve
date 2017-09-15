@@ -38,8 +38,19 @@ start_loop:                #Start loop
 	cmpl $0, %edx
 	je continue
 
-	leal 5(,%edx,2), %edx      #Multiply array element by 2 and add 5
-	movl %edx, (%eax,%edi,4)   #Overwrite old element with new value
+	leal (,%edi,2), %ebx
+
+	for_loop:
+		cmpl %ebx, %ecx
+		ja continue
+
+		#movl $0, -4(%eax,%ebx,4)
+
+		leal (%edi,%ebx,1), %ebx
+		jmp for_loop
+
+	#leal 5(,%edx,2), %edx      #Multiply array element by 2 and add 5
+	#movl %edx, (%eax,%edi,4)   #Overwrite old element with new value
 	continue:
 		incl %edi                  #Increment the index, moving through the array.
 		jmp start_loop             #Jump to loop beginning
